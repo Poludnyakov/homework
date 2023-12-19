@@ -1,0 +1,126 @@
+import java.util.Scanner;
+
+import static java.lang.Math.pow;
+import static java.lang.Math.sqrt;
+
+public class Main {
+    static Scanner s = new Scanner(System.in);
+    public static void main(String[] args){
+
+
+        System.out.println("Введите число n");
+        int n =s.nextInt();
+        Bike[] mas = new Bike[n];
+        for(int i = 0;i< n;i++){
+            Bike bike = new Bike();
+            mas[i]= bike.Rand(bike);
+
+        }
+        for(int i = 0;i<n;i++) {
+            for(int j =1 ;j<n-i;j++){
+                if(mas[j].sumdiameter > mas[j-1].sumdiameter){
+                    Bike p=  mas[j];
+                    mas[j] = mas[j-1];
+                    mas[j-1]= p;
+                }
+            }
+        }
+        Workshop shop;
+
+
+    }
+hw
+
+class Workshop{
+    void fix(Bike bike){
+        bike.repair();
+    }
+}
+class Bike {
+    public float diameter;
+    public float sumdiameter;
+    void buy(){
+        System.out.println("Вы купили велосипед");
+    }
+    void repair(){};
+    void use(){};
+    void build(){};
+    public Bike(){};
+    public Bike(float diametr){
+        diameter = diametr;
+    }
+    public Bike Rand(Bike bike){
+        int n = (int) (Math.random()*3 );
+        if (n ==0){
+            Onewheelbike bike1 = new Onewheelbike();
+            return  bike1;
+        }
+        else if(n ==1){
+            Twowheelbike bike1 = new Twowheelbike();
+            return  bike1;
+        }
+        else if(n ==2){
+            Threewheelbike bike1 = new Threewheelbike();
+            return  bike1;
+        }
+        return bike;
+    }
+
+}
+class Onewheelbike extends Bike{
+    public Onewheelbike(float diametr){
+        diameter = diametr;
+        sumdiameter = diameter;
+    }
+    public Onewheelbike(){};
+    @Override
+    void repair(){
+        System.out.println("Вы починили велосипед с 1 колесом");
+    }
+    @Override
+    void use(){
+        System.out.println("Вы используете велосипед с 1 колесом");
+    }
+    @Override
+    void build(){
+        System.out.println("Вы собрали велосипед с 1 колесoм");
+    }
+}
+class Twowheelbike extends Bike{
+    public Twowheelbike(){};
+    public Twowheelbike(float diametr){
+        diameter = diametr;
+        sumdiameter = 2*diameter;
+    }
+    @Override
+    void repair(){
+        System.out.println("Вы починили велосипед с 2 колесами");
+    }
+    @Override
+    void use() {
+        System.out.println("Вы используете велосипед с 2 колесами");
+    }
+    @Override
+    void build(){
+        System.out.println("Вы собрали велосипед с 2 колесами");
+    }
+}
+class Threewheelbike extends Bike{
+    public Threewheelbike(){};
+    public Threewheelbike(float diametr){
+        diameter = diametr;
+        sumdiameter = 3*diameter;
+    }
+    @Override
+    void repair(){
+        System.out.println("Вы починили велосипед с 3 колесами");
+    }
+    @Override
+    void use(){
+        System.out.println("Вы используете велосипед с 3 колесами");
+    }
+    @Override
+    void build(){
+        System.out.println("Вы собрали велосипед с 3 колесами");
+    }
+}
